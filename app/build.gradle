@@ -1,0 +1,92 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+android {
+    compileSdkVersion 30
+
+    buildFeatures {
+        dataBinding  true
+    }
+
+    defaultConfig {
+        applicationId "app.knapp.exerciser"
+        minSdkVersion 25
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    // if used in more than one dependency
+    def versions = [:]
+    versions.koin = '3.0.1'
+    versions.okhttp3 = '4.9.0'
+    versions.retrofit2 = '2.9.0'
+    versions.coroutines = '1.5.0'
+    versions.room = "2.3.0"
+    versions.androidx_navigation = "2.3.5"
+
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+
+    // Koin
+    implementation "io.insert-koin:koin-android:$versions.koin"
+    implementation "io.insert-koin:koin-android-ext:$versions.koin"
+
+    // HTTP API
+    implementation "com.squareup.okhttp3:okhttp:$versions.okttp3"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit2"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit2"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+
+    // Room
+    implementation "androidx.room:room-runtime:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
+    implementation "androidx.room:room-ktx:$versions.room"
+    testImplementation "androidx.room:room-testing:$versions.room"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.androidx_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.androidx_navigation"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
