@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Exerciser</string>
     <string name="title_exercise_overview">Exercise Overview</string>
+    <string name="label_start_workout">Start Workout</string>
 </resources>

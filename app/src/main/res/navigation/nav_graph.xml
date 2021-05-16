@@ -10,25 +10,15 @@
         android:name="app.knapp.exerciser.ui.main.MainFragment"
         android:label="MainFragment">
         <action
-            android:id="@+id/action_main_to_exercise"
-            app:destination="@id/exercise_nav_graph" />
+            android:id="@+id/action_main_to_workout"
+            app:destination="@id/workout_fragment" />
     </fragment>
-
-    <navigation
-        android:id="@+id/exercise_nav_graph"
-        app:startDestination="@id/exercise_fragment">
-        <fragment
-            android:id="@+id/exercise_fragment"
-            android:name="app.knapp.exerciser.ui.main.MainFragment"
-            android:label="ExerciseFragment">
-            <action
-                android:id="@+id/action_exercise_to_summary"
-                app:destination="@id/summary_fragment" />
-        </fragment>
-
-        <fragment
-            android:id="@+id/summary_fragment"
-            android:name="app.knapp.exerciser.ui.main.MainFragment"
-            android:label="SummaryFragment" />
-    </navigation>
+    <fragment
+        android:id="@+id/workout_fragment"
+        android:name="app.knapp.exerciser.ui.workout.WorkoutFragment"
+        android:label="WorkoutFragment">
+        <argument
+            android:name="workoutArgument"
+            app:argType="app.knapp.exerciser.ui.workout.WorkoutArgument" />
+    </fragment>
 </navigation>

@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.knapp.exerciser.R
 import app.knapp.exerciser.databinding.MainFragmentBinding
+import app.knapp.exerciser.ui.workout.WorkoutArgument
+import app.knapp.exerciser.ui.workout.WorkoutViewData
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -40,6 +42,23 @@ class MainFragment : Fragment() {
     private fun initView() {
         binding.exerciseList.layoutManager = LinearLayoutManager(requireContext())
         binding.exerciseList.adapter = adapter
+        binding.startWorkout.setOnClickListener { _ ->
+            viewModel.exerciseList.value?.let { exerciseList ->
+                WorkoutArgument(
+                    workoutList = exerciseList.map {
+                                WorkoutViewData(
+                                    exerciseId = it.id,
+                                    exerciseName = it.name,
+                                    videoUrl = it.videoURL,
+                                    isCompleted = false
+                                )
+                    })
+                .also { argument ->
+                    val action = MainFragmentDirections.actionMainToWorkout(argument)
+                    findNavController().navigate(action)
+                }
+            }
+        }
     }
 
     private fun initObservers() {

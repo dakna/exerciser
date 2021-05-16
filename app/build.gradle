@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'org.jetbrains.kotlin.plugin.serialization'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -50,7 +52,6 @@ dependencies {
     versions.retrofit2 = '2.9.0'
     versions.coroutines = '1.5.0'
     versions.room = "2.3.0"
-    versions.androidx_navigation = "2.3.5"
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -84,11 +85,14 @@ dependencies {
     testImplementation "androidx.room:room-testing:$versions.room"
 
     // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$versions.androidx_navigation"
-    implementation "androidx.navigation:navigation-ui-ktx:$versions.androidx_navigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$androidx_navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation_version"
 
     // Images
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    // Video
+    implementation 'com.google.android.exoplayer:exoplayer:2.14.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

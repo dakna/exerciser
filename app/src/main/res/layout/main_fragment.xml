@@ -57,10 +57,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintBottom_toTopOf="@id/start_workout"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_workout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_start_workout"
+            app:layout_constraintTop_toBottomOf="@id/exercise_list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
-            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-            />
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
