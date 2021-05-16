@@ -9,7 +9,7 @@ example
  */
 
 @Serializable
-data class ExerciseData(
+data class ExerciseApiResponse(
     val id: Int,
     val name: String,
     @SerialName("cover_image_url")
